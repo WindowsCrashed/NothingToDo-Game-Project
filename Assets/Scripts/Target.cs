@@ -5,13 +5,17 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     BoxCollider2D col2d;
+    Transform mark;
     GameObject projectile;
+    ScoreKeeper scoreKeeper;
 
     bool isPressedOnTime;
 
     void Awake()
     {
         col2d = GetComponent<BoxCollider2D>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        mark = transform.Find("Mark").transform;
     }
 
     void Start()
@@ -33,6 +37,8 @@ public class Target : MonoBehaviour
     {
         if (isPressedOnTime)
         {
+            scoreKeeper.CalculateScore(GetMarkDistance());
+
             Destroy(projectile);
             isPressedOnTime = false;
         }
@@ -41,6 +47,11 @@ public class Target : MonoBehaviour
     bool CheckForTarget()
     {
         return col2d.IsTouchingLayers(LayerMask.GetMask("Projectile"));
+    }
+
+    float GetMarkDistance()
+    {
+        return Vector2.Distance(mark.position, projectile.transform.Find("Mark").transform.position);
     }
 
     public void OnTapTarget()
