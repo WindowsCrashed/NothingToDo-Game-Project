@@ -18,26 +18,36 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField] int missPoints;
 
     [Header("Temp")]
-    [SerializeField] TextMeshProUGUI scoreText; 
-    [SerializeField] TextMeshProUGUI statusText; 
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    CanvasController canvasControl;
 
     int score = 0;
     string status;
 
+    void Awake()
+    {
+        canvasControl = FindObjectOfType<CanvasController>();
+    }
+
     void Start()
     {
-        
+        //status = "Nice";
     }
 
     void Update()
     {
         scoreText.text = score.ToString();
-        statusText.text = status;
     }
 
     void UpdateScore(int points)
     {
         score += points;
+    }
+
+    public string GetStatus()
+    {
+        return status;
     }
 
     public void CalculateScore(float distance)
@@ -69,7 +79,8 @@ public class ScoreKeeper : MonoBehaviour
         }
 
         UpdateScore(points);
+        canvasControl.ThrowStatusMessage();
         //Debug.Log(status);
-        Debug.Log(distance);
+        //Debug.Log(distance);
     }
 }
