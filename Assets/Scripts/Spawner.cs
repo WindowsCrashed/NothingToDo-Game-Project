@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +9,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] List<GameObject> spawners;
     [SerializeField] GameObject projectile;
 
+    GameManager gameManager;
+
     float timer;
 
-    void Start()
+    void Awake()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -27,14 +30,14 @@ public class Spawner : MonoBehaviour
 
     int GetRandomSpawner()
     {
-        return Random.Range(0, 4);
+        return UnityEngine.Random.Range(0, 4);
     }
 
     void ProcedurallySpawn()
     {
         timer += Time.deltaTime;
 
-        if (timer > spawnDelay)
+        if (timer > Math.Round(spawnDelay / gameManager.GetGlobalAcceleration(), 2))
         {
             Spawn(GetRandomSpawner());
             timer = 0;

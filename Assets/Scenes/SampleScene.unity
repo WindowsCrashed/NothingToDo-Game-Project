@@ -974,6 +974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  globalAcceleration: 1
+  accelerationIncrement: 0.05
+  accelerationInterval: 1
 --- !u!4 &1366826242
 Transform:
   m_ObjectHideFlags: 0
@@ -1733,6 +1736,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283243115, guid: 9dc077c9025cbe14486eae505e56e017, type: 3}
+      propertyPath: spawnDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8622700660888953048, guid: 9dc077c9025cbe14486eae505e56e017, type: 3}
       propertyPath: m_Name
       value: Spawner row
