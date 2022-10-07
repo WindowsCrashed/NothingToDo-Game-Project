@@ -21,6 +21,7 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
 
     CanvasController canvasControl;
+    GameManager gameManager;
 
     int score = 0;
     string status;
@@ -28,6 +29,7 @@ public class ScoreKeeper : MonoBehaviour
     void Awake()
     {
         canvasControl = FindObjectOfType<CanvasController>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Start()
@@ -58,6 +60,8 @@ public class ScoreKeeper : MonoBehaviour
         if (distance >= missMark)
         {
             status = "Miss";
+            gameManager.TakeLife();
+
             return missPoints;
         }
         else if (distance >= badMark)

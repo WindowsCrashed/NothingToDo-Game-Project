@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
     Transform mark;
     ScoreKeeper scoreKeeper;
     CanvasController canvasControl;
+    GameManager gameManager;
     Queue<GameObject> projectiles;
 
     bool wasDestroyed;
@@ -15,6 +16,7 @@ public class Target : MonoBehaviour
     {
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         canvasControl = FindObjectOfType<CanvasController>();
+        gameManager = FindObjectOfType<GameManager>();
         mark = transform.Find("Mark").transform;
         projectiles = new Queue<GameObject>();
     }
@@ -42,6 +44,7 @@ public class Target : MonoBehaviour
         {
             projectiles.Dequeue();
             canvasControl.ThrowStatusMessage("Miss");
+            gameManager.TakeLife();
         }
 
         wasDestroyed = false;
