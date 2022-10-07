@@ -11,7 +11,7 @@ public class TextAnimationController : MonoBehaviour
 
     void Start()
     {
-        //StatusTextAnimation();
+
     }
 
     void Update()

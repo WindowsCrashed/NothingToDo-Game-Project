@@ -33,6 +33,9 @@ public class ScoreKeeper : MonoBehaviour
     void Start()
     {
         //status = "Nice";
+
+        // For fixing stuttering (for now)
+        canvasControl.ThrowStatusMessage();
     }
 
     void Update()
@@ -50,37 +53,39 @@ public class ScoreKeeper : MonoBehaviour
         return status;
     }
 
-    public void CalculateScore(float distance)
+    int CalculateScore(float distance)
     {
-        int points = 0;
-
         if (distance >= missMark)
         {
             status = "Miss";
-            points = missPoints;
+            return missPoints;
         }
         else if (distance >= badMark)
         {
             status = "Bad";
-            points = badPoints;
+            return badPoints;
         }
         else if (distance >= goodMark)
         {
             status = "Good";
-            points = goodPoints;
+            return goodPoints;
         }
         else if (distance >= perfectMark)
         {
             status = "Perfect";
-            points = perfectPoints;
+            return perfectPoints;
         } else
         {
             status = "???";
+            return 0;
         }
-
-        UpdateScore(points);
-        canvasControl.ThrowStatusMessage();
         //Debug.Log(status);
         //Debug.Log(distance);
+    }
+
+    public void SetScore(float distance)
+    {
+        UpdateScore(CalculateScore(distance));
+        canvasControl.ThrowStatusMessage();
     }
 }

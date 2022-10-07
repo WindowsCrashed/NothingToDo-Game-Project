@@ -134,14 +134,26 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112991}
+    - target: {fileID: 5477915703372728017, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     - target: {fileID: 5477915703999197250, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112992}
+    - target: {fileID: 5477915703999197250, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     - target: {fileID: 5477915704131374238, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112990}
+    - target: {fileID: 5477915704131374238, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     - target: {fileID: 5606089768475921041, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -346,6 +358,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112989}
+    - target: {fileID: 7780049395715033889, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
 --- !u!224 &81762836 stripped
@@ -1358,14 +1374,26 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112991}
+    - target: {fileID: 5477915703372728017, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     - target: {fileID: 5477915703999197250, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112992}
+    - target: {fileID: 5477915703999197250, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     - target: {fileID: 5477915704131374238, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112990}
+    - target: {fileID: 5477915704131374238, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     - target: {fileID: 5606089768475921041, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1590,6 +1618,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3687817104378112989}
+    - target: {fileID: 7780049395715033889, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
 --- !u!1001 &7616303739622286609

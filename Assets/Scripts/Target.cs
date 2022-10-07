@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    BoxCollider2D col2d;
     Transform mark;
-    GameObject projectile;
     ScoreKeeper scoreKeeper;
+    CanvasController canvasControl;
+    Queue<GameObject> projectiles;
 
-    bool isPressedOnTime;
+    bool wasDestroyed;
 
     void Awake()
     {
-        col2d = GetComponent<BoxCollider2D>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        canvasControl = FindObjectOfType<CanvasController>();
         mark = transform.Find("Mark").transform;
+        projectiles = new Queue<GameObject>();
     }
 
     void Start()
@@ -25,43 +26,42 @@ public class Target : MonoBehaviour
 
     void Update()
     {
-        ActivateTarget();
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        projectile = collision.gameObject;
+        //projectile = collision.gameObject;
+
+        projectiles.Enqueue(collision.gameObject);
     }
 
-    void ActivateTarget()
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if (isPressedOnTime)
+        if (!wasDestroyed)
         {
-            scoreKeeper.CalculateScore(GetMarkDistance());
-
-            Destroy(projectile);
-            isPressedOnTime = false;
+            projectiles.Dequeue();
+            canvasControl.ThrowStatusMessage("Miss");
         }
+
+        wasDestroyed = false;
     }
 
-    bool CheckForTarget()
+    float GetMarkDistance(Transform projTrans)
     {
-        return col2d.IsTouchingLayers(LayerMask.GetMask("Projectile"));
+        return Vector2.Distance(mark.position, projTrans.Find("Mark").transform.position);
     }
 
-    float GetMarkDistance()
+    public void OnTap()
     {
-        return Vector2.Distance(mark.position, projectile.transform.Find("Mark").transform.position);
-    }
-
-    public void OnTapTarget()
-    {
-        if (CheckForTarget())
+        if (projectiles.Count > 0)
         {
-            isPressedOnTime = true;
-        } else
-        {
-            isPressedOnTime = false;
+            GameObject currentProj = projectiles.Dequeue();
+
+            scoreKeeper.SetScore(GetMarkDistance(currentProj.transform));
+
+            wasDestroyed = true;
+            Destroy(currentProj);         
         }
     }
 }

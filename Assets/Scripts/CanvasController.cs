@@ -23,4 +23,10 @@ public class CanvasController : MonoBehaviour
         statusText.text = scoreKeeper.GetStatus();
         txtAnimCont.BounceTextAnimation(statusText.gameObject);
     }
+
+    public void ThrowStatusMessage(string message)
+    {
+        statusText.text = message;
+        txtAnimCont.BounceTextAnimation(statusText.gameObject);
+    }
 }
