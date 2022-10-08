@@ -5,7 +5,7 @@ using TMPro;
 
 public class TextAnimationController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI statusText;
+    [Header("Bounce Effect")]
     [SerializeField] float moveDistance = 5f;
     [SerializeField] float moveSpeed = 0.1f;
 

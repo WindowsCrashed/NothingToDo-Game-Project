@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,11 +34,5 @@ public class CameraController : MonoBehaviour
             verticallyAlignedTapArea.enabled = true;
             horizontallyAlignedTapArea.enabled = false;
         }
-
-        /*
-        float orthoSize = reference.bounds.size.x * Screen.height / Screen.width * 0.5f;
-
-        Camera.main.orthographicSize = orthoSize;
-        */
     }
 }

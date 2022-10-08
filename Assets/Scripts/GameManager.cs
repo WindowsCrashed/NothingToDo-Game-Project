@@ -11,11 +11,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] float accelerationIncrement = 0.01f;
     [SerializeField] float accelerationInterval = 1;
 
-    float timer;
+    ScoreKeeper scoreKeeper;
 
-    void Start()
+    float timer;
+    int gameState;
+
+    void Awake()
     {
-        
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+
+        gameState = SceneManager.GetActiveScene().buildIndex + 1; 
     }
 
     void Update()
@@ -26,12 +31,15 @@ public class GameManager : MonoBehaviour
 
     void IncrementAcceleration()
     {
-        timer += Time.deltaTime;
-
-        if (timer > accelerationInterval)
+        if (gameState == 1)
         {
-            globalAcceleration = (float)Math.Round(globalAcceleration + accelerationIncrement, 2);
-            timer = 0;
+            timer += Time.deltaTime;
+
+            if (timer > accelerationInterval)
+            {
+                globalAcceleration = (float)Math.Round(globalAcceleration + accelerationIncrement, 2);
+                timer = 0;
+            }
         }
     }
 
@@ -45,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene(0);
+        LoadGameOver();   
     }
 
     public void TakeLife()
@@ -56,5 +64,22 @@ public class GameManager : MonoBehaviour
     public float GetGlobalAcceleration()
     {
         return globalAcceleration;
+    }
+
+    public void LoadMainMenu()
+    {
+
+    }
+
+    public void LoadGame()
+    {
+        scoreKeeper.ResetScore();
+        SceneManager.LoadScene("Game");
+    }
+
+    public void LoadGameOver()
+    {
+        scoreKeeper.UpdateHighScore();
+        SceneManager.LoadScene("GameOver");
     }
 }

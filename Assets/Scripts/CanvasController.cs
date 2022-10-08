@@ -6,6 +6,7 @@ using TMPro;
 public class CanvasController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI statusText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     TextAnimationController txtAnimCont;
     ScoreKeeper scoreKeeper;
@@ -16,6 +17,16 @@ public class CanvasController : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
 
         statusText.text = string.Empty;
+    }
+
+    void Update()
+    {
+        UpdateScoreText(scoreKeeper.GetScore());
+    }
+
+    void UpdateScoreText(int score)
+    {
+        scoreText.text = score.ToString();
     }
 
     public void ThrowStatusMessage()

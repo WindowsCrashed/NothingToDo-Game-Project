@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class ScoreKeeper : MonoBehaviour
 {
@@ -17,42 +14,22 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField] int badPoints;
     [SerializeField] int missPoints;
 
-    [Header("Temp")]
-    [SerializeField] TextMeshProUGUI scoreText;
-
-    CanvasController canvasControl;
-    GameManager gameManager;
+    [Header("Limits")]
+    [SerializeField] int maxScore;
 
     int score = 0;
+    int highScore = 0;
     string status;
 
     void Awake()
     {
-        canvasControl = FindObjectOfType<CanvasController>();
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
-    void Start()
-    {
-        //status = "Nice";
-
-        // For fixing stuttering (for now)
-        canvasControl.ThrowStatusMessage();
-    }
-
-    void Update()
-    {
-        scoreText.text = score.ToString();
+        ManageSingleton();
     }
 
     void UpdateScore(int points)
     {
         score += points;
-    }
-
-    public string GetStatus()
-    {
-        return status;
+        Mathf.Clamp(score, 0, maxScore);
     }
 
     int CalculateScore(float distance)
@@ -60,8 +37,6 @@ public class ScoreKeeper : MonoBehaviour
         if (distance >= missMark)
         {
             status = "Miss";
-            gameManager.TakeLife();
-
             return missPoints;
         }
         else if (distance >= badMark)
@@ -83,13 +58,56 @@ public class ScoreKeeper : MonoBehaviour
             status = "???";
             return 0;
         }
-        //Debug.Log(status);
+
         //Debug.Log(distance);
+    }
+
+    void ManageSingleton()
+    {
+        int instanceCount = FindObjectsOfType(GetType()).Length;
+
+        if (instanceCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        } else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+    
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
+    public string GetStatus()
+    {
+        return status;
     }
 
     public void SetScore(float distance)
     {
-        UpdateScore(CalculateScore(distance));
-        canvasControl.ThrowStatusMessage();
+        int points = CalculateScore(distance);
+
+        UpdateScore(points);
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+    }
+
+    public void UpdateHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+        }
     }
 }
