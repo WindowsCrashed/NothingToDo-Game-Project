@@ -844,6 +844,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusText: {fileID: 467545491}
   scoreText: {fileID: 1615923284}
+  tapAreaButtonGroups:
+  - {fileID: 1717549521}
+  - {fileID: 1691030053}
 --- !u!1 &871852964
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +942,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5606089769480907354, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
   m_PrefabInstance: {fileID: 5606089769193302319}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1717549521}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
@@ -976,9 +979,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
-  globalAcceleration: 1
-  accelerationIncrement: 0.05
-  accelerationInterval: 1
+  speedDecrement: 0.003
+  loadSceneDelay: 1.3
 --- !u!4 &1366826242
 Transform:
   m_ObjectHideFlags: 0
@@ -1211,12 +1213,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615923282}
   m_CullTransparentMesh: 1
+--- !u!1 &1691030053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5606089769480907356, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+  m_PrefabInstance: {fileID: 81762835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1717549521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5606089769480907356, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
+  m_PrefabInstance: {fileID: 5606089769193302319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1733512441 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5606089769480907354, guid: 3b7d2031c041c5041a5b910a5fb272f4, type: 3}
   m_PrefabInstance: {fileID: 81762835}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1691030053}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
@@ -1705,10 +1717,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 283243115, guid: 9dc077c9025cbe14486eae505e56e017, type: 3}
-      propertyPath: spawnDelay
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8622700660888953048, guid: 9dc077c9025cbe14486eae505e56e017, type: 3}
       propertyPath: m_Name
       value: Spawner row

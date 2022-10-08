@@ -28,7 +28,7 @@ public class Target : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!wasDestroyed)
+        if (!wasDestroyed && gameManager.GetLifeState())
         {
             projectiles.Dequeue();
             canvasControl.ThrowStatusMessage("Miss");

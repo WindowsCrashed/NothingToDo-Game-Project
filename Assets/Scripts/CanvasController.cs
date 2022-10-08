@@ -5,8 +5,12 @@ using TMPro;
 
 public class CanvasController : MonoBehaviour
 {
+    [Header("Text")]
     [SerializeField] TextMeshProUGUI statusText;
     [SerializeField] TextMeshProUGUI scoreText;
+
+    [Header("Tap area")]
+    [SerializeField] List<GameObject> tapAreaButtonGroups;
 
     TextAnimationController txtAnimCont;
     ScoreKeeper scoreKeeper;
@@ -39,5 +43,13 @@ public class CanvasController : MonoBehaviour
     {
         statusText.text = message;
         txtAnimCont.BounceTextAnimation(statusText.gameObject);
+    }
+
+    public void DisableTapInteraction()
+    {
+        foreach (GameObject btnGroup in tapAreaButtonGroups)
+        {
+            btnGroup.SetActive(false);
+        }
     }
 }

@@ -24,6 +24,6 @@ public class TextAnimationController : MonoBehaviour
         LeanTween.moveY(text, text.transform.position.y + moveDistance, moveSpeed)
             .setEaseInExpo().setOnComplete(
             () => LeanTween.moveY(text, text.transform.position.y - moveDistance, moveSpeed)
-            .setEaseInExpo());
+            .setEaseInExpo()).setIgnoreTimeScale(true);
     }
 }

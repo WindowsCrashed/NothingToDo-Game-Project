@@ -6,40 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Player")]
     [SerializeField] int hp;
-    [SerializeField] float globalAcceleration = 0.01f;
-    [SerializeField] float accelerationIncrement = 0.01f;
-    [SerializeField] float accelerationInterval = 1;
+
+    [Header("Game speed")]
+    [SerializeField] float speedDecrement = 0.003f;
+
+    [Header("Delay")]
+    [SerializeField] float loadSceneDelay;
 
     ScoreKeeper scoreKeeper;
 
-    float timer;
-    int gameState;
+    bool isAlive = true;
 
     void Awake()
     {
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
 
-        gameState = SceneManager.GetActiveScene().buildIndex + 1; 
+        Time.timeScale = 1;
     }
 
     void Update()
     {
-        CheckPlayerHp();
-        IncrementAcceleration();
-    }
-
-    void IncrementAcceleration()
-    {
-        if (gameState == 1)
+        if (isAlive)
         {
-            timer += Time.deltaTime;
-
-            if (timer > accelerationInterval)
-            {
-                globalAcceleration = (float)Math.Round(globalAcceleration + accelerationIncrement, 2);
-                timer = 0;
-            }
+            CheckPlayerHp();
+        } else
+        {
+            SlowDownTime();
         }
     }
 
@@ -53,17 +47,34 @@ public class GameManager : MonoBehaviour
 
     void Die()
     {
-        LoadGameOver();   
+        isAlive = false;
+        DisablePlayerControls();
+        StartCoroutine(LoadSceneAfterDelay(LoadGameOver));
+    }
+
+    void DisablePlayerControls()
+    {
+        FindObjectOfType<CanvasController>().DisableTapInteraction();
+    }
+
+    void SlowDownTime()
+    {
+        if (Time.timeScale > 0)
+        {
+            Time.timeScale = Mathf.Clamp(Time.timeScale - speedDecrement, 0, float.MaxValue);
+        }
+    }
+
+    IEnumerator LoadSceneAfterDelay(Action loadScene)
+    {
+        yield return new WaitForSecondsRealtime(loadSceneDelay);
+
+        loadScene();
     }
 
     public void TakeLife()
     {
         hp--;
-    }
-
-    public float GetGlobalAcceleration()
-    {
-        return globalAcceleration;
     }
 
     public void LoadMainMenu()
@@ -81,5 +92,10 @@ public class GameManager : MonoBehaviour
     {
         scoreKeeper.UpdateHighScore();
         SceneManager.LoadScene("GameOver");
+    }
+
+    public bool GetLifeState()
+    {
+        return isAlive;
     }
 }
