@@ -1,12 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class GameOverCanvas : MonoBehaviour
 {
+    [Header("Text")]
+    [SerializeField] TextMeshProUGUI scoreTitleText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI highScoreTitleText;
     [SerializeField] TextMeshProUGUI highScoreText;
+
+    [Header("Buttons")]
+    [SerializeField] GameObject buttonGroup;
+
+    [Header("Delay")]
+    [SerializeField] float initialDelay;
+    [SerializeField] float baseDelay;
 
     TextAnimationController txtAnimCont;
     ScoreKeeper scoreKeeper;
@@ -19,7 +30,41 @@ public class GameOverCanvas : MonoBehaviour
 
     void Start()
     {
-        scoreText.text = scoreKeeper.GetScore().ToString();
         highScoreText.text = scoreKeeper.GetHighScore().ToString();
+        
+        StartCoroutine(LoadGameOverScreenGradually());
+    }
+
+    IEnumerator LoadGameOverScreenGradually()
+    {
+        yield return new WaitForSeconds(initialDelay);
+
+        scoreTitleText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(baseDelay);
+
+        scoreText.gameObject.SetActive(true);
+
+        yield return StartCoroutine(txtAnimCont.CountUpEffectCoroutine(scoreText, scoreKeeper.GetScore()));
+        
+        yield return new WaitForSeconds(baseDelay);
+
+        highScoreTitleText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(baseDelay);
+
+        highScoreText.gameObject.SetActive(true);
+        
+        if (scoreKeeper.GetHighScore() == scoreKeeper.GetScore()
+            && scoreKeeper.GetHighScore() != 0)
+        {
+            txtAnimCont.BounceTextAnimation(highScoreText.gameObject);
+            yield return new WaitForSeconds(0.5f);
+            txtAnimCont.BounceTextAnimation(highScoreText.gameObject);
+        }
+
+        yield return new WaitForSeconds(baseDelay);
+
+        buttonGroup.SetActive(true);      
     }
 }
