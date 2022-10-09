@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         ScaleWithScreenSize();
-        Application.targetFrameRate = 60;
     }
 
     void ScaleWithScreenSize()

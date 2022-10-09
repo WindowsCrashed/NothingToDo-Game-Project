@@ -11,7 +11,6 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScoreTitleText;
     [SerializeField] TextMeshProUGUI highScoreText;
-    [SerializeField] TextMeshProUGUI title;
 
     [Header("Buttons")]
     [SerializeField] GameObject buttonGroup;
