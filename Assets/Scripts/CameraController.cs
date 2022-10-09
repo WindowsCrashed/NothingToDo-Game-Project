@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         ScaleWithScreenSize();
+        Application.targetFrameRate = 60;
     }
 
     void ScaleWithScreenSize()
@@ -28,8 +29,6 @@ public class CameraController : MonoBehaviour
         {
             float differenceInSize = targetRatio / screenRatio;
             Camera.main.orthographicSize = reference.bounds.size.y / 2 * differenceInSize;
-            
-            Debug.Log(2);
 
             verticallyAlignedTapArea.enabled = true;
             horizontallyAlignedTapArea.enabled = false;

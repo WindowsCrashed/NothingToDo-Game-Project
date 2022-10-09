@@ -31,9 +31,6 @@ public class GameManager : MonoBehaviour
         if (isAlive)
         {
             CheckPlayerHp();
-        } else
-        {
-            SlowDownTime();
         }
     }
 
@@ -49,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         isAlive = false;
         DisablePlayerControls();
-        StartCoroutine(LoadSceneAfterDelay(LoadGameOver));
+        StartCoroutine(LoadGameOverAfterSlowDown());
     }
 
     void DisablePlayerControls()
@@ -57,12 +54,24 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<CanvasController>().DisableTapInteraction();
     }
 
-    void SlowDownTime()
+    IEnumerator SlowDownTime()
     {
-        if (Time.timeScale > 0)
+        while (Time.timeScale > 0)
         {
+            // 0.05f on build, 0.003f on editor
             Time.timeScale = Mathf.Clamp(Time.timeScale - speedDecrement, 0, float.MaxValue);
+
+            yield return new WaitForEndOfFrame();
         }
+    }
+
+    IEnumerator LoadGameOverAfterSlowDown()
+    {
+        yield return StartCoroutine(SlowDownTime());
+
+        yield return new WaitForSecondsRealtime(loadSceneDelay);
+
+        LoadGameOver();
     }
 
     IEnumerator LoadSceneAfterDelay(Action loadScene)
