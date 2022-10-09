@@ -48,13 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04c753722334694096bcebede6d7dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
   spawners:
   - {fileID: 2259630552750962404}
   - {fileID: 5995527059489065793}
   - {fileID: 5995527060310871939}
   - {fileID: 5995527059942231790}
   projectile: {fileID: 1018937504267512915, guid: 33d6efda1c5a35c42beb4a6a2da0aacf, type: 3}
+  baseSpawnDelay: 1
+  acceleration: 1
+  accelerationIncrement: 0.05
+  accelerationInterval: 1
 --- !u!1001 &4307212062519473180
 PrefabInstance:
   m_ObjectHideFlags: 0

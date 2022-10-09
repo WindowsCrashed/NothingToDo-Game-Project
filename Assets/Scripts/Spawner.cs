@@ -1,23 +1,26 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] float spawnDelay;
+    [Header("Objects")]
     [SerializeField] List<GameObject> spawners;
     [SerializeField] GameObject projectile;
 
-    float timer;
+    [Header("Spawn time")]
+    [SerializeField] float baseSpawnDelay = 1;
+    [SerializeField] float acceleration = 1;
+    [SerializeField] float accelerationIncrement = 0.05f;
+    [SerializeField] float accelerationInterval = 1;
 
-    void Start()
-    {
-        
-    }
+    float spawnDelayTimer;
+    float accelerationTimer;
 
     void Update()
     {
         ProcedurallySpawn();
+        IncrementAcceleration();
     }
 
     void Spawn(int pos)
@@ -27,17 +30,28 @@ public class Spawner : MonoBehaviour
 
     int GetRandomSpawner()
     {
-        return Random.Range(0, 4);
+        return UnityEngine.Random.Range(0, 4);
     }
 
     void ProcedurallySpawn()
     {
-        timer += Time.deltaTime;
+        spawnDelayTimer += Time.deltaTime;
 
-        if (timer > spawnDelay)
+        if (spawnDelayTimer > Math.Round(baseSpawnDelay / acceleration, 2))
         {
             Spawn(GetRandomSpawner());
-            timer = 0;
+            spawnDelayTimer = 0;
+        }
+    }
+
+    void IncrementAcceleration()
+    {
+        accelerationTimer += Time.deltaTime;
+
+        if (accelerationTimer > accelerationInterval)
+        {
+            acceleration = (float)Math.Round(acceleration + accelerationIncrement, 2);
+            accelerationTimer = 0;
         }
     }
 }

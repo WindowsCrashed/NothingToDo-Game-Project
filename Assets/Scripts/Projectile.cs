@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float speed;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -18,6 +11,7 @@ public class Projectile : MonoBehaviour
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y - speed * Time.deltaTime);
+        transform.position = new Vector2(transform.position.x,
+            transform.position.y - speed * Time.deltaTime);
     }
 }

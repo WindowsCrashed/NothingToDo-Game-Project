@@ -21,26 +21,14 @@ public class Target : MonoBehaviour
         projectiles = new Queue<GameObject>();
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //projectile = collision.gameObject;
-
         projectiles.Enqueue(collision.gameObject);
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!wasDestroyed)
+        if (!wasDestroyed && gameManager.GetLifeState())
         {
             projectiles.Dequeue();
             canvasControl.ThrowStatusMessage("Miss");
@@ -62,7 +50,13 @@ public class Target : MonoBehaviour
             GameObject currentProj = projectiles.Dequeue();
 
             scoreKeeper.SetScore(GetMarkDistance(currentProj.transform));
-
+            canvasControl.ThrowStatusMessage();
+            
+            if (scoreKeeper.GetStatus() == "Miss")
+            {
+                gameManager.TakeLife();
+            }
+            
             wasDestroyed = true;
             Destroy(currentProj);         
         }

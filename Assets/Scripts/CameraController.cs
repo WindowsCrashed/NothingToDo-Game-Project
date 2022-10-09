@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,17 +28,9 @@ public class CameraController : MonoBehaviour
         {
             float differenceInSize = targetRatio / screenRatio;
             Camera.main.orthographicSize = reference.bounds.size.y / 2 * differenceInSize;
-            
-            Debug.Log(2);
 
             verticallyAlignedTapArea.enabled = true;
             horizontallyAlignedTapArea.enabled = false;
         }
-
-        /*
-        float orthoSize = reference.bounds.size.x * Screen.height / Screen.width * 0.5f;
-
-        Camera.main.orthographicSize = orthoSize;
-        */
     }
 }
