@@ -45,13 +45,8 @@ public class GameManager : MonoBehaviour
     void Die()
     {
         isAlive = false;
-        DisablePlayerControls();
+        FindObjectOfType<CanvasController>().ProcessPlayerDeath();
         StartCoroutine(LoadGameOverAfterSlowDown());
-    }
-
-    void DisablePlayerControls()
-    {
-        FindObjectOfType<CanvasController>().DisableTapInteraction();
     }
 
     IEnumerator SlowDownTime()

@@ -14,11 +14,13 @@ public class CanvasController : MonoBehaviour
 
     TextAnimationController txtAnimCont;
     ScoreKeeper scoreKeeper;
+    GameManager gameManager;
 
     void Awake()
     {
         txtAnimCont = FindObjectOfType<TextAnimationController>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        gameManager = FindObjectOfType<GameManager>();
 
         statusText.text = string.Empty;
     }
@@ -45,11 +47,22 @@ public class CanvasController : MonoBehaviour
         txtAnimCont.BounceTextAnimation(statusText.gameObject);
     }
 
+    public void BlinkStatusMessage()
+    {
+        StartCoroutine(txtAnimCont.BlinkText(statusText));
+    }
+
     public void DisableTapInteraction()
     {
         foreach (GameObject btnGroup in tapAreaButtonGroups)
         {
             btnGroup.SetActive(false);
         }
+    }
+
+    public void ProcessPlayerDeath()
+    {
+        DisableTapInteraction();
+        BlinkStatusMessage();
     }
 }

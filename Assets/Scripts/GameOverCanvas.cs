@@ -11,6 +11,7 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScoreTitleText;
     [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] TextMeshProUGUI title;
 
     [Header("Buttons")]
     [SerializeField] GameObject buttonGroup;
@@ -58,13 +59,11 @@ public class GameOverCanvas : MonoBehaviour
         if (scoreKeeper.GetHighScore() == scoreKeeper.GetScore()
             && scoreKeeper.GetHighScore() != 0)
         {
-            txtAnimCont.BounceTextAnimation(highScoreText.gameObject);
-            yield return new WaitForSeconds(0.5f);
-            txtAnimCont.BounceTextAnimation(highScoreText.gameObject);
+            yield return StartCoroutine(txtAnimCont.BlinkText(highScoreText, 2));
         }
 
         yield return new WaitForSeconds(baseDelay);
 
-        buttonGroup.SetActive(true);      
+        buttonGroup.SetActive(true);
     }
 }

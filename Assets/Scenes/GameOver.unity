@@ -732,6 +732,7 @@ MonoBehaviour:
   scoreText: {fileID: 1615923284}
   highScoreTitleText: {fileID: 1431755016}
   highScoreText: {fileID: 308811206}
+  title: {fileID: 1783360956}
   buttonGroup: {fileID: 1667010314}
   initialDelay: 1
   baseDelay: 0.5
@@ -906,6 +907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 5
   moveSpeed: 0.1
+  incrementValue: 25
+  blinkInterval: 0.2
 --- !u!114 &1366826244
 MonoBehaviour:
   m_ObjectHideFlags: 0

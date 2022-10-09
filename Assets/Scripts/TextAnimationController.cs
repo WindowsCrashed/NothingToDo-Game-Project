@@ -11,6 +11,12 @@ public class TextAnimationController : MonoBehaviour
     [SerializeField] float moveDistance = 5f;
     [SerializeField] float moveSpeed = 0.1f;
 
+    [Header("Count Effect")]
+    [SerializeField] int incrementValue = 5;
+
+    [Header("Blink Effect")]
+    [SerializeField] float blinkInterval = 0.5f;
+
     public Coroutine isSomethingThere; 
 
     bool wasSkipped; // Flag for coroutines
@@ -36,6 +42,14 @@ public class TextAnimationController : MonoBehaviour
         wasSkipped = true;
     }
 
+    public void BounceTextAnimation(GameObject text)
+    {
+        LeanTween.moveY(text, text.transform.position.y + moveDistance, moveSpeed)
+            .setEaseInExpo().setOnComplete(
+            () => LeanTween.moveY(text, text.transform.position.y - moveDistance, moveSpeed)
+            .setEaseInExpo()).setIgnoreTimeScale(true);
+    }
+
     public IEnumerator CountUpEffectCoroutine(TextMeshProUGUI text, int value)
     {
         int count = 0;
@@ -49,23 +63,30 @@ public class TextAnimationController : MonoBehaviour
             }
 
             text.text = count.ToString();
-            count += 5;
+            count += incrementValue;
             Mathf.Clamp(count, 0, value);
 
             yield return new WaitForEndOfFrame();
         }
     }
 
-    public void BounceTextAnimation(GameObject text)
+    public IEnumerator BlinkText(TextMeshProUGUI text)
     {
-        LeanTween.moveY(text, text.transform.position.y + moveDistance, moveSpeed)
-            .setEaseInExpo().setOnComplete(
-            () => LeanTween.moveY(text, text.transform.position.y - moveDistance, moveSpeed)
-            .setEaseInExpo()).setIgnoreTimeScale(true);
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(blinkInterval);
+            text.alpha = Mathf.Abs(text.alpha - 1);
+        }
     }
 
-    public void CountUpTextEffect(TextMeshProUGUI text, int value)
+    public IEnumerator BlinkText(TextMeshProUGUI text, int repeat)
     {
-        StartCoroutine(CountUpEffectCoroutine(text, value));
+        repeat *= 2;
+
+        for (int i = 0; i < repeat; i++)
+        {
+            yield return new WaitForSecondsRealtime(blinkInterval);
+            text.alpha = Mathf.Abs(text.alpha - 1);
+        }
     }
 }

@@ -957,8 +957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab7aa7462501de4e9bcf7d65dfe2318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
-  speedDecrement: 0.05
+  hp: 1
+  speedDecrement: 0.03
   loadSceneDelay: 0.6
 --- !u!4 &1366826242
 Transform:
@@ -989,6 +989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 5
   moveSpeed: 0.1
+  incrementValue: 5
+  blinkInterval: 0.15
 --- !u!1 &1484078717
 GameObject:
   m_ObjectHideFlags: 0
