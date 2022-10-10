@@ -9,6 +9,7 @@ public class Target : MonoBehaviour
     CanvasController canvasControl;
     GameManager gameManager;
     Queue<GameObject> projectiles;
+    AudioManager audioManager;
 
     bool wasDestroyed;
 
@@ -17,6 +18,7 @@ public class Target : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         canvasControl = FindObjectOfType<CanvasController>();
         gameManager = FindObjectOfType<GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         mark = transform.Find("Mark").transform;
         projectiles = new Queue<GameObject>();
     }
@@ -33,6 +35,7 @@ public class Target : MonoBehaviour
             projectiles.Dequeue();
             canvasControl.ThrowStatusMessage("Miss");
             gameManager.TakeLife();
+            audioManager.PlayClip("Miss");
         }
 
         wasDestroyed = false;
@@ -56,7 +59,9 @@ public class Target : MonoBehaviour
             {
                 gameManager.TakeLife();
             }
-            
+
+            audioManager.PlayClip(scoreKeeper.GetStatus());
+
             wasDestroyed = true;
             Destroy(currentProj);         
         }
