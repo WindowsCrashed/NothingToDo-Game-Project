@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using TMPro;
 
 public class GameOverCanvas : MonoBehaviour
@@ -58,7 +57,7 @@ public class GameOverCanvas : MonoBehaviour
         if (scoreKeeper.GetHighScore() == scoreKeeper.GetScore()
             && scoreKeeper.GetHighScore() != 0)
         {
-            yield return StartCoroutine(txtAnimCont.BlinkText(highScoreText, 2));
+            yield return StartCoroutine(txtAnimCont.BlinkTextNoInterval(highScoreText, 2));
         }
 
         yield return new WaitForSeconds(baseDelay);

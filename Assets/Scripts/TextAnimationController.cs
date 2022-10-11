@@ -70,7 +70,7 @@ public class TextAnimationController : MonoBehaviour
         }
     }
 
-    public IEnumerator BlinkText(TextMeshProUGUI text)
+    public IEnumerator BlinkTextNoInterval(TextMeshProUGUI text)
     {
         while (true)
         {
@@ -79,13 +79,33 @@ public class TextAnimationController : MonoBehaviour
         }
     }
 
-    public IEnumerator BlinkText(TextMeshProUGUI text, int repeat)
+    public IEnumerator BlinkTextNoInterval(TextMeshProUGUI text, int repeat)
     {
         repeat *= 2;
 
         for (int i = 0; i < repeat; i++)
         {
             yield return new WaitForSecondsRealtime(blinkInterval);
+            text.alpha = Mathf.Abs(text.alpha - 1);
+        }
+    }
+
+    public IEnumerator BlinkText(TextMeshProUGUI text, float interval)
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(interval);
+            text.alpha = Mathf.Abs(text.alpha - 1);
+        }
+    }
+
+    public IEnumerator BlinkText(TextMeshProUGUI text, float interval, int repeat)
+    {
+        repeat *= 2;
+
+        for (int i = 0; i < repeat; i++)
+        {
+            yield return new WaitForSecondsRealtime(interval);
             text.alpha = Mathf.Abs(text.alpha - 1);
         }
     }
