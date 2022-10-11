@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
                 }
                 else if (obj.coroutineAction == DropdownMenus.Actions.BlinkNewHighScore)
                 {
-                    obj.coroutineReturn = StartCoroutine(BlinkNewHighScore(obj.gameObject));
+                    obj.coroutineReturn = StartCoroutine(BlinkNewHighScore(obj.gameObject, obj.blinkInterval));
                 }
                 else if (obj.coroutineAction == DropdownMenus.Actions.CountUpText)
                 {
@@ -80,7 +80,7 @@ public class UIManager : MonoBehaviour
                     else if (act == DropdownMenus.Actions.BlinkNewHighScore)
                     {
                         obj.actionsToExecute.Add(() => StartCoroutine(BlinkNewHighScore(
-                            obj.gameObject)));
+                            obj.gameObject, obj.blinkInterval)));
                     }
                     else if (act == DropdownMenus.Actions.CountUpText)
                     {
@@ -99,12 +99,12 @@ public class UIManager : MonoBehaviour
         StartCoroutine(LoadScreenGradually());
     }
 
-    IEnumerator BlinkNewHighScore(GameObject text)
+    IEnumerator BlinkNewHighScore(GameObject text, float interval)
     {
         if (scoreKeeper.GetHighScore() == scoreKeeper.GetScore()
             && scoreKeeper.GetHighScore() != 0)
         {
-            yield return StartCoroutine(txtAnimCont.BlinkText(text.GetComponent<TextMeshProUGUI>(), 2));
+            yield return StartCoroutine(txtAnimCont.BlinkText(text.GetComponent<TextMeshProUGUI>(), interval, 2));
         }
     }
 

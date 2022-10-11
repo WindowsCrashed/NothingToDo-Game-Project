@@ -31,7 +31,7 @@ public class GameOverCanvas : MonoBehaviour
     {
         highScoreText.text = scoreKeeper.GetHighScore().ToString();
         
-        StartCoroutine(LoadGameOverScreenGradually());
+        //StartCoroutine(LoadGameOverScreenGradually());
     }
 
     IEnumerator LoadGameOverScreenGradually()
