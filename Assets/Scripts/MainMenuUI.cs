@@ -46,7 +46,7 @@ public class MainMenuUI : MonoBehaviour
         yield return new WaitForSeconds(baseDelay + 0.5f);
 
         buttonGroup.SetActive(true);
-        StartCoroutine(txtAnimCont.BlinkTextNoInterval(buttonGroup.GetComponentInChildren<TextMeshProUGUI>()));
+        StartCoroutine(txtAnimCont.BlinkText(buttonGroup.GetComponentInChildren<TextMeshProUGUI>()));
         highScoreTitleText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
     }

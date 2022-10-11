@@ -49,7 +49,7 @@ public class CanvasController : MonoBehaviour
 
     public void BlinkStatusMessage()
     {
-        StartCoroutine(txtAnimCont.BlinkTextNoInterval(statusText));
+        StartCoroutine(txtAnimCont.BlinkText(statusText));
     }
 
     public void DisableTapInteraction()
