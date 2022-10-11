@@ -46,6 +46,7 @@ public class Target : MonoBehaviour
         return Vector2.Distance(mark.position, projTrans.Find("Mark").transform.position);
     }
 
+    [RuntimeInitializeOnLoadMethod]
     public void OnTap()
     {
         if (projectiles.Count > 0)

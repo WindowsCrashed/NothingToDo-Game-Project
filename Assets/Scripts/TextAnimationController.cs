@@ -42,6 +42,7 @@ public class TextAnimationController : MonoBehaviour
         wasSkipped = true;
     }
 
+    [RuntimeInitializeOnLoadMethod]
     public void BounceTextAnimation(GameObject text)
     {
         LeanTween.moveY(text, text.transform.position.y + moveDistance, moveSpeed)
