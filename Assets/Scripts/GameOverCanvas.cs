@@ -19,6 +19,7 @@ public class GameOverCanvas : MonoBehaviour
 
     [Header("Dependencies")]
     [SerializeField] TextAnimationController txtAnimCont;
+    [SerializeField] AudioManager audioManager;
 
     ScoreKeeper scoreKeeper;
 
@@ -56,6 +57,7 @@ public class GameOverCanvas : MonoBehaviour
         if (scoreKeeper.GetHighScore() == scoreKeeper.GetScore()
             && scoreKeeper.GetHighScore() != 0)
         {
+            audioManager.PlayClip("NewHighScore");
             yield return StartCoroutine(txtAnimCont.BlinkText(highScoreText, 2));
         }
 

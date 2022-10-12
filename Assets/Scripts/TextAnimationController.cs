@@ -39,12 +39,18 @@ public class TextAnimationController : MonoBehaviour
     public IEnumerator CountUpEffectCoroutine(TextMeshProUGUI text, int value)
     {
         int count = 0;
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        
+        if (value != 0)
+        {
+            audioManager.PlayClip("Count");
+        }      
 
         while (count <= value)
         {
             if (wasSkipped)
             {
-                text.text = value.ToString();
+                text.text = value.ToString();                
                 break;
             }
 
@@ -54,6 +60,12 @@ public class TextAnimationController : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+
+        if (value != 0)
+        {
+            audioManager.StopClip("Count");
+            audioManager.PlayClip("CountCoda");
+        }       
     }
 
     public IEnumerator BlinkText(TextMeshProUGUI text)
