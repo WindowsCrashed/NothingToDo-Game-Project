@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -17,20 +15,7 @@ public class TextAnimationController : MonoBehaviour
     [Header("Blink Effect")]
     [SerializeField] float blinkInterval = 0.5f;
 
-    public Coroutine isSomethingThere; 
-
     bool wasSkipped; // Flag for coroutines
-
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 
     void OnTouchInput(InputValue value)
     {

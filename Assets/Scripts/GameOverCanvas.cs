@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using TMPro;
 
 public class GameOverCanvas : MonoBehaviour
@@ -19,19 +17,19 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] float initialDelay;
     [SerializeField] float baseDelay;
 
-    TextAnimationController txtAnimCont;
+    [Header("Dependencies")]
+    [SerializeField] TextAnimationController txtAnimCont;
+
     ScoreKeeper scoreKeeper;
 
     void Awake()
     {
-        txtAnimCont = FindObjectOfType<TextAnimationController>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        highScoreText.text = scoreKeeper.GetHighScore().ToString();
     }
 
     void Start()
-    {
-        highScoreText.text = scoreKeeper.GetHighScore().ToString();
-        
+    {   
         StartCoroutine(LoadGameOverScreenGradually());
     }
 
@@ -39,22 +37,22 @@ public class GameOverCanvas : MonoBehaviour
     {
         yield return new WaitForSeconds(initialDelay);
 
-        scoreTitleText.gameObject.SetActive(true);
+        scoreTitleText.alpha = 1;
 
         yield return new WaitForSeconds(baseDelay);
 
-        scoreText.gameObject.SetActive(true);
+        scoreText.alpha = 1;
 
         yield return StartCoroutine(txtAnimCont.CountUpEffectCoroutine(scoreText, scoreKeeper.GetScore()));
         
         yield return new WaitForSeconds(baseDelay);
 
-        highScoreTitleText.gameObject.SetActive(true);
+        highScoreTitleText.alpha = 1;
 
         yield return new WaitForSeconds(baseDelay);
 
-        highScoreText.gameObject.SetActive(true);
-        
+        highScoreText.alpha = 1;
+
         if (scoreKeeper.GetHighScore() == scoreKeeper.GetScore()
             && scoreKeeper.GetHighScore() != 0)
         {

@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class MainMenuUI : MonoBehaviour
@@ -10,44 +10,46 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI titleText;
     [SerializeField] TextMeshProUGUI highScoreTitleText;
     [SerializeField] TextMeshProUGUI highScoreText;
-
-    [Header("Buttons")]
-    [SerializeField] GameObject buttonGroup;
+    [SerializeField] TextMeshProUGUI playButtonText;
 
     [Header("Delay")]
     [SerializeField] float baseDelay;
 
-    TextAnimationController txtAnimCont;
+    [Header("Button")]
+    [SerializeField] Button playButton;
+
+    [Header("Dependencies")]
+    [SerializeField] TextAnimationController txtAnimCont;
+    
     ScoreKeeper scoreKeeper;
 
     void Awake()
     {
-        txtAnimCont = FindObjectOfType<TextAnimationController>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        highScoreText.text = scoreKeeper.GetHighScore().ToString();
     }
 
     void Start()
     {
-        highScoreText.text = scoreKeeper.GetHighScore().ToString();
-
         StartCoroutine(LoadScreenGradually());
     }
 
     IEnumerator LoadScreenGradually()
     {
-        yield return new WaitForSeconds(baseDelay);
+        yield return new WaitForSeconds(baseDelay + 0.72f);
 
-        superTitleText.gameObject.SetActive(true);
+        superTitleText.alpha = 1;
 
-        yield return new WaitForSeconds(baseDelay + 1);
+        yield return new WaitForSeconds(baseDelay + 1.1f);
 
-        titleText.gameObject.SetActive(true);
+        titleText.alpha = 1;
 
-        yield return new WaitForSeconds(baseDelay + 0.5f);
+        yield return new WaitForSeconds(baseDelay + 0.6f);
 
-        buttonGroup.SetActive(true);
-        StartCoroutine(txtAnimCont.BlinkText(buttonGroup.GetComponentInChildren<TextMeshProUGUI>()));
-        highScoreTitleText.gameObject.SetActive(true);
-        highScoreText.gameObject.SetActive(true);
+        playButtonText.alpha = 1;
+        playButton.interactable = true;
+        StartCoroutine(txtAnimCont.BlinkText(playButtonText));
+        highScoreTitleText.alpha = 1;
+        highScoreText.alpha = 1;
     }
 }

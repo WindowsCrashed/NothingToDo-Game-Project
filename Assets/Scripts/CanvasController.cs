@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,15 +11,15 @@ public class CanvasController : MonoBehaviour
     [Header("Tap area")]
     [SerializeField] List<GameObject> tapAreaButtonGroups;
 
-    TextAnimationController txtAnimCont;
-    ScoreKeeper scoreKeeper;
-    GameManager gameManager;
+    [Header("Dependencies")]
+    [SerializeField] TextAnimationController txtAnimCont;
+    [SerializeField] GameManager gameManager;
+    
+    ScoreKeeper scoreKeeper;    
 
     void Awake()
     {
-        txtAnimCont = FindObjectOfType<TextAnimationController>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        gameManager = FindObjectOfType<GameManager>();
 
         statusText.text = string.Empty;
     }

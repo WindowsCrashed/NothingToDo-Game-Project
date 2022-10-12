@@ -887,6 +887,8 @@ MonoBehaviour:
   tapAreaButtonGroups:
   - {fileID: 1717549521}
   - {fileID: 1691030053}
+  txtAnimCont: {fileID: 1366826243}
+  gameManager: {fileID: 1366826241}
 --- !u!1 &871852964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,58 +1399,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Traget Row
       objectReference: {fileID: 0}
-    - target: {fileID: 3687817104766267491, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526298656308039, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526299118456364, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526299131340927, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526299349314300, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526300019822223, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526300132187956, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526300484378039, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494526300513450980, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422109912812932432, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422109913641918155, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422109913822181915, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422109913969863584, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
+    - target: {fileID: 3963992707431476000, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1366826241}
+    - target: {fileID: 3963992707431476000, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 216229646}
+    - target: {fileID: 3963992707431476000, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: canvasControl
+      value: 
+      objectReference: {fileID: 856840692}
+    - target: {fileID: 3963992708177272395, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1366826241}
+    - target: {fileID: 3963992708177272395, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 216229646}
+    - target: {fileID: 3963992708177272395, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: canvasControl
+      value: 
+      objectReference: {fileID: 856840692}
+    - target: {fileID: 3963992708357536411, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1366826241}
+    - target: {fileID: 3963992708357536411, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 216229646}
+    - target: {fileID: 3963992708357536411, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: canvasControl
+      value: 
+      objectReference: {fileID: 856840692}
+    - target: {fileID: 3963992709495770576, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1366826241}
+    - target: {fileID: 3963992709495770576, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 216229646}
+    - target: {fileID: 3963992709495770576, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
+      propertyPath: canvasControl
+      value: 
+      objectReference: {fileID: 856840692}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d427738b89ea54d49b99e95e1f873d89, type: 3}
 --- !u!114 &3687817104378112989 stripped
@@ -1824,6 +1822,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283243115, guid: 9dc077c9025cbe14486eae505e56e017, type: 3}
+      propertyPath: accelerationIncrement
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2259630552750962404, guid: 9dc077c9025cbe14486eae505e56e017, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

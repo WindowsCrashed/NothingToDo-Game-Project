@@ -73,6 +73,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4ce6d4b70fefe469602ede5017b2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mark: {fileID: 5891234058546394629}
+  canvasControl: {fileID: 0}
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!1 &968838816634644545
 GameObject:
   m_ObjectHideFlags: 0
